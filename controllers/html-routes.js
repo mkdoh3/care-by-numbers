@@ -1,16 +1,18 @@
+const db = require("../models");
 
-var path = require("path");
 
-module.exports = function (app){
-	app.get("/patient", function(req, res) {
-		res.render("patientData");
-	})
-
-	app.get("/", function (req, res) {
-        res.render("index", {
-            title: "Care Cost"
+module.exports = app => {
+    app.get("/", (req, res) => {
+        db.Procedure.findAll({}).then(result => {
+            let hbsObject = {
+                names: result
+            };
+            res.render("index", hbsObject)
         })
-    })
-}
+    });
 
+    app.get("/patient", (req, res) => {
+        res.render("patientData");
+    });
 
+};
