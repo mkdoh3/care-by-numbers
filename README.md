@@ -1,7 +1,5 @@
 # Illumination: Showing the Real Cost of Care
 
-![Alt Text](public/assets/img/illumination.jpg)
-
 ### Synopsis
 
 Illumination is a web-based application that provides the highest and lowest costs of procedures in individual U.S. states.  In this first build, we are highlighting the costs of:
