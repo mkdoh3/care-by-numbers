@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     }, {
         timestamps: false,
-        tableName: "provider_Info"
+        tableName: "provider_info_geocoded"
 
 
     });

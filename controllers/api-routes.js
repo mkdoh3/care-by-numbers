@@ -2,13 +2,13 @@ const db = require("../models");
 const helpers = require("./helpers/helpers")
 
 
-module.exports = app => {
+module.exports = function (app) {
 
 
 
     //all procedures
-    app.get('/api/procedures', (req, res) => {
-        db.Procedure.findAll({}).then(result => {
+    app.get('/api/procedures', function (req, res) {
+        db.Procedure.findAll({}).then(function (result) {
             res.json(result);
         });
     });
@@ -16,12 +16,12 @@ module.exports = app => {
 
 
     //all procedures by id
-    app.get('/api/procedures/:id', (req, res) => {
+    app.get('/api/procedures/:id', function (req, res) {
         db.Procedure.findAll({
             where: {
                 procedureId: req.params.id
             }
-        }).then(result => {
+        }).then(function (result) {
             res.json(result);
         });
     });
@@ -29,16 +29,15 @@ module.exports = app => {
 
 
     //all cost data
-    app.get("/api/costs", (req, res) => {
-        db.Cost.findAll({}).then(result => {
+    app.get("/api/costs", function (req, res) {
+        db.Cost.findAll({}).then(function (result) {
             res.json(result);
         });
     });
 
 
-
     //all costs by zip code
-    app.get("/api/cost/:zip", (req, res) => {
+    app.get("/api/cost/:zip", function (req, res) {
         db.Cost.findAll({
             order: [['hospitalCharges', 'DESC']],
             include: [{
@@ -48,14 +47,14 @@ module.exports = app => {
                 },
             }],
 
-        }).then(result => {
+        }).then(function (result) {
             res.json(result);
         });
     });
 
 
     //all costs by id and state
-    app.get("/api/cost/:state/:id", (req, res) => {
+    app.get("/api/cost/:state/:id", function (req, res) {
         db.Cost.findAll({
             where: {
                 ProcedureProcedureId: req.params.id,
@@ -67,7 +66,7 @@ module.exports = app => {
                 }
             }],
 
-        }).then(result => {
+        }).then(function (result) {
             res.json(result);
         });
     });
@@ -75,7 +74,7 @@ module.exports = app => {
 
 
     //    get state wide average cost for a given procedure using the 'stateCostAverage' helper function
-    app.get("/api/avg/:id", (req, res) => {
+    app.get("/api/avg/:id", function (req, res) {
         db.Cost.findAll({
             where: {
                 ProcedureProcedureId: req.params.id,
@@ -85,7 +84,7 @@ module.exports = app => {
                 model: db.Provider,
                 attributes: ['state']
                 }]
-        }).then(result => {
+        }).then(function (result) {
             result = helpers.stateCostAverages(result)
             res.json(result);
         });
@@ -93,7 +92,7 @@ module.exports = app => {
 
 
     //get country wide min/max costs for a given procedure
-    app.get("/api/mm/:id", (req, res) => {
+    app.get("/api/mm/:id", function (req, res) {
         db.Cost.findAll({
             where: {
                 ProcedureProcedureId: req.params.id,
@@ -104,11 +103,7 @@ module.exports = app => {
                 attributes: ['state']
             }],
             order: [['hospitalCharges', 'DESC']]
-        }).then(result => {
-            console.log("stateMax", result[0].Provider.state);
-            console.log("max", result[0].hospitalCharges);
-            console.log("stateMin", result[result.length - 1].Provider.state)
-            console.log("min", result[result.length - 1].hospitalCharges);
+        }).then(function (result) {
             result = helpers.costMinMax(result)
             res.json(result)
         })
@@ -116,7 +111,7 @@ module.exports = app => {
 
 
     //get state wide min/max for a given procedure
-    app.get("/api/mm/:state/:id", (req, res) => {
+    app.get("/api/mm/:state/:id", function (req, res) {
         db.Cost.findAll({
             where: {
                 ProcedureProcedureId: req.params.id,
@@ -129,7 +124,7 @@ module.exports = app => {
                 }
             }],
             order: [['hospitalCharges', 'DESC']]
-        }).then(result => {
+        }).then(function (result) {
             result = helpers.costMinMax(result)
             res.json(result)
         })
@@ -137,16 +132,16 @@ module.exports = app => {
 
 
 
-    app.get('/api/patient', (req, res) => {
-        db.Patient.findAll({}).then(result => {
+    app.get('/api/patient', function (req, res) {
+        db.Patient.findAll({}).then(function (result) {
             res.json(result);
         });
     });
 
 
 
-    app.post('/api/patient', (req, res) => {
-        db.Patient.create(req.body).then(dbPatient => {
+    app.post('/api/patient', function (req, res) {
+        db.Patient.create(req.body).then(function (dbPatient) {
             res.json(dbPatient);
         });
     });
