@@ -1,7 +1,16 @@
 $(function () {
 
-
+    //draw map on load witht default
     drawMap(1);
+
+    //redraw map on button click
+    $(".proc-btn").on("click", function () {
+        drawMap($(this).data("id"));
+    });
+
+
+
+
 
 
 
@@ -38,10 +47,6 @@ $(function () {
     //        getRankedStateList(procId, name);
     //        $("#state-ranking-title").text("State Ranking");
     //    });
-
-    $(".proc-btn").on("click", function () {
-        drawMap($(this).data("id"));
-    })
 
 
 
