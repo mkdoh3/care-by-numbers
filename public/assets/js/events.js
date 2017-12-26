@@ -6,6 +6,11 @@ $(function () {
     //redraw map on button click
     $(".proc-btn").on("click", function () {
         drawMap($(this).data("id"));
+        let name = $(this).data("name");
+        let procDesc = $(this).data("desc");
+        $("#title-for-map").empty();
+        $("#procedure-lead").empty();
+        $("#title-for-map ").prepend("<h2> " + name + " <small>Procedure Cost by State</small></h2><p>" + procDesc + "</p>");
     });
 
 
