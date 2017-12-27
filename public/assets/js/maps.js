@@ -20,8 +20,10 @@ const updateMap = (map, state, id) =>
 
 
         //there's probably a more elegant way to do this, but for now it works.
-        //this is just to make sure the map is done zooming before it updates
+        //timer is to make sure the map is done zooming before it updates
         setTimeout(function () {
+
+            //set zoom to current location to mantain zoom after update
             map.dataProvider.zoomLevel = map.zoomLevel();
             map.dataProvider.zoomLatitude = map.dataProvider.zoomLatitudeC = map.zoomLatitude();
             map.dataProvider.zoomLongitude = map.dataProvider.zoomLongitudeC = map.zoomLongitude();
@@ -63,16 +65,30 @@ const drawMap = id =>
                     let state = event.mapObject.id;
                     updateMap(map, state, id);
                 }
+            }, {
+                "event": "homeButtonClicked",
+                "method": function () {
+                    map.dataProvider.zoomLevel = 1;
+                    map.dataProvider.zoomLatitudeC = 37.43716;
+                    map.dataProvider.zoomLongitudeC = -92.4785;
+                    map.dataProvider.images = [];
+                    map.validateData();
+                }
             }]
         });
         data.forEach(function (e) {
+            console.log("data", data)
             let areaObj = {
                 "id": e.state,
-                "value": e.averageCost
+                "value": e.averageCost,
+                "balloonText": `<h5>${e.state}</h><br><p>Avg. Cost: $${e.averageCost}</p>`
+
             };
             map.dataProvider.areas.push(areaObj)
         });
+
         map.validateData();
+        console.log(map)
     });
 
 

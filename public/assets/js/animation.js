@@ -1,10 +1,9 @@
-$(document).on('click', 'a', function () {
-    $('html, body').animate({
-        scrollTop: $($(this).attr('href')).offset().top
-    }, 500);
-    return false;
-});
-
+//$(document).on('click', '.proc-btn', function () {
+//    $('html body').animate({
+//        scrollTop: $("#map-div").offset().top
+//    }, 500);
+//    return false;
+//});
 
 function openMap(cityName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */

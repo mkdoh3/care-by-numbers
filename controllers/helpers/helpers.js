@@ -34,9 +34,9 @@ module.exports = {
 
 
     costMinMax: queryResults => {
-        let stateMax = queryResults[0].Provider.state;
+        let stateMax = queryResults[0].Provider.state_old;
         let max = queryResults[0].hospitalCharges;
-        let stateMin = queryResults[queryResults.length - 1].Provider.state
+        let stateMin = queryResults[queryResults.length - 1].Provider.state_old
         let min = queryResults[queryResults.length - 1].hospitalCharges;
         let minMax = [{
             state: stateMin,

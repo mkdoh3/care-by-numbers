@@ -100,7 +100,7 @@ module.exports = function (app) {
             attributes: ['ProcedureProcedureId', 'hospitalCharges'],
             include: [{
                 model: db.Provider,
-                attributes: ['state']
+                attributes: ['state_old']
             }],
             order: [['hospitalCharges', 'DESC']]
         }).then(function (result) {

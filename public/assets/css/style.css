@@ -17,7 +17,7 @@ body {
 
 
 
-header {
+#main-header {
     margin-bottom: 1em;
     grid-column: 1/7;
     display: grid;
@@ -26,14 +26,14 @@ header {
     -ms-flex-pack: center;
     justify-content: center;
     background-color: #fcfcfc;
-    /*            border-bottom: 1px solid #e5e5e5;*/
     -webkit-box-shadow: 1px 1px 1px #f0f0f0;
     box-shadow: 1px 1px 1px #f0f0f0;
     background-color: #fbfbfb;
 
 }
 
-header > img {
+
+#main-header > img {
     padding: .5em;
 }
 
@@ -63,18 +63,19 @@ article {}
 
 
 .button-wrapper {
-    /*    padding: 0 1.5em;*/
     margin: 0 1.5em;
     grid-column: 2/6;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
 
-#title-for-map {
+#map-header {
     grid-column: 2/6;
     padding: 1.25em;
     margin: 0 1.5em;
     color: #4d2c02;
+    background-color: #fbfbfb;
+
 }
 
 

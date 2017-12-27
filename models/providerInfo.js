@@ -21,6 +21,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(35),
             allowNull: false,
         },
+        state_old: {
+            type: DataTypes.STRING(35),
+            allowNull: false,
+        },
         zipCode_old: {
             type: DataTypes.INTEGER(11),
             allowNull: false,

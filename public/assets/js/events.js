@@ -1,21 +1,25 @@
 $(function () {
 
-    //draw map on load witht default
+    //draw map on load with default
     drawMap(1);
+    //update html on load with default
+    $("#map-header").prepend("<h2>Heart Transplant<small> Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
 
-    //redraw map on button click
+
     $(".proc-btn").on("click", function () {
+        //redraw map
         drawMap($(this).data("id"));
+        //update html
         let name = $(this).data("name");
         let procDesc = $(this).data("desc");
-        $("#title-for-map").empty();
+        $("#map-header").empty();
         $("#procedure-lead").empty();
-        $("#title-for-map ").prepend("<h2> " + name + " <small>Procedure Cost by State</small></h2><p>" + procDesc + "</p>");
+        $("#map-header").prepend(`<h2>${name}<small> Procedure Cost by State</small></h2><p>${procDesc}</p>`);
+        //scroll to map div
+        $('html,body').animate({
+            scrollTop: $("#map-div").offset().top
+        }, 800);
     });
-
-
-
-
 
 
 
