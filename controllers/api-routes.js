@@ -104,7 +104,7 @@ module.exports = function (app) {
             }],
             order: [['hospitalCharges', 'DESC']]
         }).then(function (result) {
-            result = helpers.costMinMax(result)
+            result = helpers.countrytMinMax(result)
             res.json(result)
         })
     });
@@ -125,7 +125,7 @@ module.exports = function (app) {
             }],
             order: [['hospitalCharges', 'DESC']]
         }).then(function (result) {
-            result = helpers.costMinMax(result)
+            result = helpers.zipCodeMinMax(result)
             res.json(result)
         })
     });
