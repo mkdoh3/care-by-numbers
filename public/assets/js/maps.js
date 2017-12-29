@@ -11,8 +11,8 @@ const updateMap = (map, state, id) =>
             let hospital = e.Provider.providerName + "\n" + e.Provider.address_old
             map.dataProvider.images.push({
                 "imageURL": "assets/img/hospital-icon.png",
-                "height": 15,
-                "width": 15,
+                "height": 30,
+                "width": 30,
                 "rollOverScale": 2,
                 "latitude": latitude,
                 "longitude": longitude,
@@ -62,8 +62,10 @@ const drawMap = id =>
             "listeners": [{
                 "event": "clickMapObject",
                 "method": function (event) {
-                    $("#down-btn").show();
                     let state = event.mapObject.id;
+                    let title = event.mapObject.enTitle
+                    $("#down-btn").show();
+                    $("#region-header").empty().prepend(`<h2>${title}<small> Min and Max Cost by Region</small></h2>`).show();
                     updateMap(map, state, id);
                     updateLineChart(state, id);
                 }
@@ -72,6 +74,11 @@ const drawMap = id =>
                 "method": function () {
                     $("#region-div").hide();
                     $("#down-btn").hide();
+                    $("#up-btn").hide();
+                    $("#region-header").hide();
+                    $('html,body').animate({
+                        scrollTop: $(".button-wrapper").offset().top
+                    }, 800);
                     //zoom needs to be reset to defaults first
                     map.dataProvider.zoomLevel = 1;
                     map.dataProvider.zoomLatitudeC = 37.43716;
@@ -85,7 +92,7 @@ const drawMap = id =>
             let areaObj = {
                 "id": e.state,
                 "value": e.averageCost,
-                "balloonText": `<h5>${e.state}</h><br><p>Avg. Cost: $${e.averageCost}</p>`
+                "balloonText": `<h5>[[title]]</h><br><p>Avg. Cost: $[[value]]</p>`
 
             };
             map.dataProvider.areas.push(areaObj)

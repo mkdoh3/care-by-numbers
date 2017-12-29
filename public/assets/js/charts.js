@@ -20,7 +20,7 @@ const barChart = Chart.Bar($("#min-max"), {
         labels: ["Pennsylvania", "Average", "Arizona"],
         datasets: [
             {
-                backgroundColor: ["#4374e0", "#b1b1b1", "#f2af58"],
+                backgroundColor: ["#4374e0", "#b6b6b6", "#f2af58"],
                 data: [2794182, 1000000, 382051],
         }],
     },
@@ -44,17 +44,9 @@ const barChart = Chart.Bar($("#min-max"), {
             position: 'top',
             padding: 10,
             text: ['Maximum and Minimum Cost Country Wide', "Heart Transplant"]
-        },
-        layout: {
-            padding: {
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
         }
     }
-})
+});
 
 
 
@@ -78,10 +70,6 @@ const lineChart = Chart.Line($("#region-div"), {
     },
     options: {
         responsive: true,
-        title: {
-            display: true,
-            text: 'Min and Max Cost by Region'
-        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -95,15 +83,12 @@ const lineChart = Chart.Line($("#region-div"), {
                 }
                     }]
         },
-        //        tooltips: {
-        //            enabled: true,
-        //            mode: 'single',
-        //            callbacks: {
-        //                label: function (tooltipItems, data) {
-        //***********hospital name to be added later*******
-        //                }
-        //            }
-        //        }
+        tooltips: {
+            shared: true,
+            contentFormatter: function (e) {
+                console.log(this);
+            }
+        }
     }
 });
 
@@ -112,20 +97,16 @@ const lineChart = Chart.Line($("#region-div"), {
 //the updateLineChart get request is wired to return the corresponding hospital name along with each min/max
 //eventually I'd like to add those names into custom tooltips for the linechart
 
+//would like to add handle for the few cases where there are not enough data points to draw a line chart
 
 
 //called from maps.js
-const updateLineChart = (state, id) =>
+const updateLineChart = function (state, id) {
+    lineChart.data.labels = [];
+    lineChart.data.datasets[0].data = [];
+    lineChart.data.datasets[1].data = [];
     $.get("/api/mm/" + state + "/" + id).then(function (data) {
-
-        //not sure how much I like this approach for handling when there are not enough data points to draw the chart properly
-        //might have to add some html updates at least so user knows whats happened
-        if (data.length < 2) {
-            return;
-        }
-        lineChart.data.labels = [];
-        lineChart.data.datasets[0].data = [];
-        lineChart.data.datasets[1].data = [];
+        console.log(data);
         data.forEach(function (e) {
             lineChart.data.labels.push(e.region);
             lineChart.data.datasets[0].data.push(e.min);
@@ -134,3 +115,4 @@ const updateLineChart = (state, id) =>
         lineChart.update();
         $("#region-div").show();
     });
+}

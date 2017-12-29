@@ -1,14 +1,20 @@
 $(function () {
 
+    //reset page position
+    $("html, body").animate({
+        scrollTop: 0
+    }, 500);
+
     //draw map on load with default
     drawMap(1);
     //update html on load with default
-    $("#map-header").prepend("<h2>Heart Transplant<small> Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
+    $("#map-header").prepend("<h2>Heart Transplant<small> Average Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
 
     //    hide empty lineChart and nav btn by default, will show on update 
     $("#region-div").hide();
     $("#down-btn").hide();
     $("#up-btn").hide();
+    $("#region-header").hide();
 
 
 
@@ -20,7 +26,7 @@ $(function () {
         let procDesc = $(this).data("desc");
         $("#map-header").empty();
         $("#procedure-lead").empty();
-        $("#map-header").prepend(`<h2>${name}<small> Procedure Cost by State</small></h2><p>${procDesc}</p>`);
+        $("#map-header").prepend(`<h2>${name}<small> Average Procedure Cost by State</small></h2><p>${procDesc}</p>`);
         //scroll to map div
         $('html,body').animate({
             scrollTop: $(".button-wrapper").offset().top
@@ -42,11 +48,6 @@ $(function () {
     })
 
 
-    $("#nav-patient").on("click", function () {
-        console.log('clicked');
-        //$.get("/patient";
-    })
-
 
     $(".proc-btn").hover(function () {
         let id = $(this).data("id");
@@ -59,10 +60,7 @@ $(function () {
 });
 
 
-
-
-
-
+//***** left in case I decide to implement the state rank list somehow.. but it doesn't seem to fit well in this current layout
 
 //disable page scrolling while mouse is in the list-div. prevents page from moving 
 //    $(document).on('mousewheel DOMMouseScroll', "#list-div", (e) => {
@@ -85,20 +83,3 @@ $(function () {
 //            $("#list-div").empty().append(html);
 //        });
 //    };
-
-
-//    $(".proc-btn").on("click", function () {
-//        //        clear html
-//        $("#title-for-map").children("h1:first").remove();
-//        $("#procedure-lead").text("");
-//        $("state-ranking-title").text("");
-//        //        set html
-//        let procId = $(this).data("id");
-//        let name = $(this).data("name");
-//        let procDesc = $(this).data("desc");
-//        $("#title-for-map").append("<h1>" + name + "<small> Procedure Cost by State</small></h1>");
-//        $("#procedure-lead").text(procDesc);
-//        //        get ranked list
-//        getRankedStateList(procId, name);
-//        $("#state-ranking-title").text("State Ranking");
-//    });

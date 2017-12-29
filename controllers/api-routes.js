@@ -131,15 +131,6 @@ module.exports = function (app) {
     });
 
 
-
-    app.get('/api/patient', function (req, res) {
-        db.Patient.findAll({}).then(function (result) {
-            res.json(result);
-        });
-    });
-
-
-
     app.post('/api/patient', function (req, res) {
         db.Patient.create(req.body).then(function (dbPatient) {
             res.json(dbPatient);
