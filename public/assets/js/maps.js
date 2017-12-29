@@ -1,7 +1,9 @@
+//its possible to overlay google maps.. i might want to do that eventually, or find a way to add city markers at least
+
+
 const updateMap = (map, state, id) =>
 
     $.get("/api/cost/" + state + "/" + id).then(function (data) {
-        console.log("all state cost data", data);
         data.forEach(function (e) {
             let latitude = parseFloat(e.Provider.latitude);
             let longitude = parseFloat(e.Provider.longitude);
@@ -31,9 +33,7 @@ const updateMap = (map, state, id) =>
             map.validateData();
 
         }, 750)
-
-        console.log("map", map);
-    })
+    });
 
 
 const drawMap = id =>
@@ -62,12 +62,15 @@ const drawMap = id =>
             "listeners": [{
                 "event": "clickMapObject",
                 "method": function (event) {
+                    $("#region-div").hide();
                     let state = event.mapObject.id;
                     updateMap(map, state, id);
+                    updateLineChart(state, id);
                 }
             }, {
                 "event": "homeButtonClicked",
                 "method": function () {
+                    //zoom needs to be reset to defaults first
                     map.dataProvider.zoomLevel = 1;
                     map.dataProvider.zoomLatitudeC = 37.43716;
                     map.dataProvider.zoomLongitudeC = -92.4785;
@@ -77,7 +80,6 @@ const drawMap = id =>
             }]
         });
         data.forEach(function (e) {
-            console.log("data", data)
             let areaObj = {
                 "id": e.state,
                 "value": e.averageCost,
@@ -88,41 +90,4 @@ const drawMap = id =>
         });
 
         map.validateData();
-        console.log(map)
     });
-
-
-
-
-
-
-
-
-
-//    console.log("inside update map", map.dataProvider.areas)
-//    console.log("state", state)
-//    console.log(map.dataProvider.areas.id.state)
-
-//    let areas = map.dataProvider.areas;
-
-//    for (let i = 0; i < areas.length; i++) {
-//        console.log(areas[i])
-//        if (areas[i].id === state) {
-//            areas[i].value = 0;
-//            break;
-//        }
-//    };
-
-
-//When data is changed, all you need to do is set new data for data set:
-//
-//dataSet.dataProvider = yourDataArray;
-//and then call
-//
-//stockChart.validateData();
-
-// for updating after zoom..
-//map will probs have to be completely updated(prob with a new ajax call) after each zoom in and zoom out.
-//for state zoom i should be able to update only the required field.. 
-//with the above event listener I should be able to make an ajax call based on the 'id', get the state wide cost data, and then update just that state on the map
-//might want to store the previous data somehow? so when you click on an adjacent state or zoom out, just that previous state is redrawn back to showing state wide average

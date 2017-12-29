@@ -104,13 +104,13 @@ module.exports = function (app) {
             }],
             order: [['hospitalCharges', 'DESC']]
         }).then(function (result) {
-            result = helpers.countrytMinMax(result)
+            result = helpers.costMinMax(result)
             res.json(result)
         })
     });
 
 
-    //get state wide min/max for a given procedure
+    //get region wide min/max for a given procedure and state
     app.get("/api/mm/:state/:id", function (req, res) {
         db.Cost.findAll({
             where: {
@@ -125,7 +125,7 @@ module.exports = function (app) {
             }],
             order: [['hospitalCharges', 'DESC']]
         }).then(function (result) {
-            result = helpers.zipCodeMinMax(result)
+            result = helpers.regionMinMax(result)
             res.json(result)
         })
     });

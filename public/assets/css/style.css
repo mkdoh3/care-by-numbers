@@ -10,7 +10,6 @@ body {
 .wrapper {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    /*     grid-row-start: 2;*/
     grid-column-gap: 1.5em;
     grid-row-gap: 2.5em;
 }
@@ -32,18 +31,16 @@ body {
 
 }
 
-
 #main-header > img {
+    max-height: 216px;
     padding: .5em;
 }
 
-article {}
 
-
-.lead {
+.main-text {
     grid-column: 2/5;
-    font-size: 1.4em;
-    text-indent: -1em;
+    font-size: 1.3em;
+    text-indent: -1.5em;
     padding-left: 1.75em;
 }
 
@@ -60,6 +57,11 @@ article {}
 #min-max {
     min-width: 550px;
 }
+
+button:focus {
+    outline: 0;
+}
+
 
 
 .button-wrapper {
@@ -93,11 +95,24 @@ small {
 }
 
 
+#down-btn {
+    justify-self: start;
+    -ms-flex-item-align: end;
+    align-self: end;
+    background: transparent;
+    border: none;
+    color: #f2af58;
+    cursor: pointer;
+
+}
 
 
+.region-wrapper {
+    grid-column: 2/6;
+    max-height: 300px;
 
+}
 
-/* Style the tab buttons */
 
 .tab-btn {
     display: inline-block;
@@ -106,71 +121,14 @@ small {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
+    padding: .75em 1em;
+    font-size: 1.2em;
 }
 
-/* Change background color of buttons on hover */
 
 .tab-btn:hover {
     background-color: #777;
 }
-
-/* Set default styles for tab content */
-
-.tabcontent {
-    color: white;
-    display: none;
-    padding: 50px;
-    text-align: center;
-}
-
-/* Style each tab content individually */
-
-#London {
-    background-color: #e5d80c;
-}
-
-#Paris {
-    background-color: green;
-}
-
-#Tokyo {
-    background-color: blue;
-}
-
-#Oslo {
-    background-color: orange;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

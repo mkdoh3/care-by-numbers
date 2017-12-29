@@ -33,7 +33,7 @@ module.exports = {
     },
 
 
-    countryMinMax: queryResults => {
+    costMinMax: queryResults => {
         let stateMax = queryResults[0].Provider.state_old;
         let max = queryResults[0].hospitalCharges;
         let stateMin = queryResults[queryResults.length - 1].Provider.state_old
@@ -47,63 +47,46 @@ module.exports = {
         }];
         return minMax
     },
-    zipCodeMinMax: queryResults => {
+
+    //would love to know a better way of doing this.. this seems a little much but was the only way I could think of
+    //results return in json format, but it was easiest to filter through as an object and then build the new data back into json format for easier looping in the chart drawing function..
+    regionMinMax: queryResults => {
+        console.log(queryResults[0].Provider)
         let results = [];
         let minMaxData = {};
         queryResults.forEach(function (e) {
             let region = e.Provider.region.slice(5);
             let cost = parseFloat(e.hospitalCharges);
-            //if results doesnt have the zip code yet..
-
-
+            let name = e.Provider.providerName
             if (region in minMaxData) {
                 if (minMaxData[region].min > cost) {
                     minMaxData[region].min = cost;
+                    minMaxData[region].minProvider = name;
                 } else if (minMaxData[region].max < cost) {
                     minMaxData[region].max = cost
+                    minMaxData[region].maxProvider = name;
+
                 }
             } else {
                 minMaxData[region] = {
                     min: cost,
-                    max: cost
+                    minProvider: name,
+                    max: cost,
+                    maxProvider: name
                 }
             }
-            //
-            //
-            //
-            //
-            //            if (results.indexOf(region) === -1) {
-            //                minMaxData.region = region;
-            //                minMaxData.min = cost;
-            //                minMaxData.max = cost;
-            //
-            //                results.push(minMaxData)
-            //
-            //            } else if (results[region].min > cost) {
-            //                results[region].min = cost;
-            //            } else if (results[zip].max < cost) {
-            //                results[region].max = cost;
-            //            }
-        })
-        for (const key in minMaxData) {
-            console.log(minMaxData[key])
+
+        });
+        for (const region in minMaxData) {
             results.push({
-                [key]: minMaxData[key]
+                region: region,
+                min: minMaxData[region].min,
+                minProvider: minMaxData[region].minProvider,
+                max: minMaxData[region].max,
+                maxProvider: minMaxData[region].maxProvider
+
             })
         }
-        console.log(results[0])
         return results;
     }
 }
-
-//d733bw
-//
-
-
-// should look something like this
-//results = [{
-//    60643 : {
-//      min: min,
-//      max: max
-//},
-//}]
