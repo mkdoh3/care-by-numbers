@@ -5,8 +5,11 @@ $(function () {
     //update html on load with default
     $("#map-header").prepend("<h2>Heart Transplant<small> Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
 
-    //    hide empty lineChart by default, will show on update 
+    //    hide empty lineChart and nav btn by default, will show on update 
     $("#region-div").hide();
+    $("#down-btn").hide();
+    $("#up-btn").hide();
+
 
 
     $(".proc-btn").on("click", function () {
@@ -20,9 +23,23 @@ $(function () {
         $("#map-header").prepend(`<h2>${name}<small> Procedure Cost by State</small></h2><p>${procDesc}</p>`);
         //scroll to map div
         $('html,body').animate({
-            scrollTop: $("#map-div").offset().top
+            scrollTop: $(".button-wrapper").offset().top
         }, 800);
     });
+
+    $("#down-btn").on("click", function () {
+        $('html,body').animate({
+            scrollTop: $("#region-div").offset().top
+        }, 800);
+        $("#up-btn").show();
+    })
+
+    $("#up-btn").on("click", function () {
+        $('html,body').animate({
+            scrollTop: $(".button-wrapper").offset().top
+        }, 800);
+        $("#up-btn").hide();
+    })
 
 
     $("#nav-patient").on("click", function () {

@@ -95,13 +95,13 @@ small {
 }
 
 
-#down-btn {
+.nav-btn {
     justify-self: start;
     -ms-flex-item-align: end;
     align-self: end;
     background: transparent;
     border: none;
-    color: #f2af58;
+    color: #f4b500;
     cursor: pointer;
 
 }
@@ -109,8 +109,13 @@ small {
 
 .region-wrapper {
     grid-column: 2/6;
-    max-height: 300px;
+    min-height: 650px;
 
+}
+
+.region-style {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 
@@ -129,6 +134,75 @@ small {
 .tab-btn:hover {
     background-color: #777;
 }
+
+
+
+/*nav button animations*/
+
+@-webkit-keyframes glowing {
+    0% {
+        -webkit-text-shadow: 0 0 .25px #FFCC00;
+    }
+    50% {
+        -webkit-text-shadow: 0 0 2.5px #A41770;
+    }
+    100% {
+        -webkit-text-shadow: 0 0 .25px #FFCC00;
+    }
+}
+
+@keyframes glowing {
+    0% {
+        -webkit-text-shadow: 0 0 .25px #FFCC00;
+        text-shadow: 0 0 .25px #FFCC00;
+    }
+    50% {
+        -webkit-text-shadow: 0 0 2.5px #A41770;
+        text-shadow: 0 0 2.5px #A41770;
+    }
+    100% {
+        -webkit-text-shadow: 0 0 .5px #FFCC00;
+        text-shadow: 0 0 .25px #FFCC00;
+    }
+}
+
+#down-btn, #up-btn {
+    -webkit-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

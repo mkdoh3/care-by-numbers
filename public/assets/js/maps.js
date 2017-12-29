@@ -62,7 +62,7 @@ const drawMap = id =>
             "listeners": [{
                 "event": "clickMapObject",
                 "method": function (event) {
-                    $("#region-div").hide();
+                    $("#down-btn").show();
                     let state = event.mapObject.id;
                     updateMap(map, state, id);
                     updateLineChart(state, id);
@@ -70,6 +70,8 @@ const drawMap = id =>
             }, {
                 "event": "homeButtonClicked",
                 "method": function () {
+                    $("#region-div").hide();
+                    $("#down-btn").hide();
                     //zoom needs to be reset to defaults first
                     map.dataProvider.zoomLevel = 1;
                     map.dataProvider.zoomLatitudeC = 37.43716;
