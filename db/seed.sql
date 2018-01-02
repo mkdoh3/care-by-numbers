@@ -1,5 +1,4 @@
 
-
 // used mysql workbench import wizard to import the filtered csv file then did the following: 
 
 

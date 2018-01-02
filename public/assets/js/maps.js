@@ -65,6 +65,7 @@ const drawMap = id =>
                     let state = event.mapObject.id;
                     let title = event.mapObject.enTitle
                     $("#down-btn").show();
+                    $("#up-btn").show();
                     $("#region-header").empty().prepend(`<h2>${title}<small> Min and Max Cost by Region</small></h2>`).show();
                     updateMap(map, state, id);
                     updateLineChart(state, id);

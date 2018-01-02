@@ -3,6 +3,10 @@ Chart.defaults.global.defaultFontColor = '#4d2c02';
 Chart.defaults.global.defaultFontFamily = 'roboto';
 Chart.defaults.global.defaultFontSize = 16;
 
+var barCtx = document.getElementById("min-max").getContext("2d");
+var lineCtx = document.getElementById("region-div").getContext("2d");
+
+
 
 const updateBarChart = (procedure, state1, num1, state2, num2) => {
     //very unscientific average.. will fix later!
@@ -15,7 +19,7 @@ const updateBarChart = (procedure, state1, num1, state2, num2) => {
     barChart.update();
 }
 
-const barChart = Chart.Bar($("#min-max"), {
+const barChart = Chart.Bar(barCtx, {
     data: {
         labels: ["Pennsylvania", "Average", "Arizona"],
         datasets: [
@@ -32,7 +36,7 @@ const barChart = Chart.Bar($("#min-max"), {
         maintainAspectRatio: false,
         scales: {
             xAxes: [{
-                barThickness: 100
+                barThickness: 70
         }]
         },
 
@@ -51,7 +55,7 @@ const barChart = Chart.Bar($("#min-max"), {
 
 
 
-const lineChart = Chart.Line($("#region-div"), {
+const lineChart = Chart.Line(lineCtx, {
     data: {
         labels: [],
         datasets: [{
@@ -106,7 +110,6 @@ const updateLineChart = function (state, id) {
     lineChart.data.datasets[0].data = [];
     lineChart.data.datasets[1].data = [];
     $.get("/api/mm/" + state + "/" + id).then(function (data) {
-        console.log(data);
         data.forEach(function (e) {
             lineChart.data.labels.push(e.region);
             lineChart.data.datasets[0].data.push(e.min);

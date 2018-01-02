@@ -19,6 +19,10 @@ $(function () {
 
 
     $(".proc-btn").on("click", function () {
+        $("#region-div").hide();
+        $("#down-btn").hide();
+        $("#up-btn").hide();
+        $("#region-header").hide();
         //redraw map
         drawMap($(this).data("id"));
         //update html
@@ -37,7 +41,6 @@ $(function () {
         $('html,body').animate({
             scrollTop: $("#region-div").offset().top
         }, 800);
-        $("#up-btn").show();
     })
 
     $("#up-btn").on("click", function () {
@@ -49,7 +52,7 @@ $(function () {
 
 
 
-    $(".proc-btn").hover(function () {
+    $(".proc-btn").mouseover(function () {
         let id = $(this).data("id");
         let name = $(this).data("name");
         $.get("/api/mm/" + id).then(function (data) {
@@ -58,7 +61,6 @@ $(function () {
     });
 
 });
-
 
 //***** left in case I decide to implement the state rank list somehow.. but it doesn't seem to fit well in this current layout
 

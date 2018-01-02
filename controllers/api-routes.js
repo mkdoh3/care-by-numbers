@@ -2,9 +2,8 @@ const db = require("../models");
 const helpers = require("./helpers/helpers")
 
 
+
 module.exports = function (app) {
-
-
 
     //all procedures
     app.get('/api/procedures', function (req, res) {
@@ -73,7 +72,7 @@ module.exports = function (app) {
 
 
 
-    //    get state wide average cost for a given procedure using the 'stateCostAverage' helper function
+    //get state wide average cost for a given procedure using the 'stateCostAverage' helper function
     app.get("/api/avg/:id", function (req, res) {
         db.Cost.findAll({
             where: {

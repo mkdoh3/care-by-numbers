@@ -3,63 +3,55 @@
 body {
     font-family: 'roboto', sans-serif;
     background-image: url("/assets/img/tiny_grid.png");
+    min-width: 936px;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 1.5em;
+    grid-auto-rows:
 }
 
 #main-header {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     grid-column: 1/7;
     display: grid;
     grid: 1fr;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-color: #fcfcfc;
     -webkit-box-shadow: 1px 1px 1px #f0f0f0;
-    box-shadow: 1px 1px 1px #f0f0f0;
+    box-shadow: 1px 1px 1px #eee;
     background-color: #fbfbfb;
 
 }
 
 #main-header > img {
-    max-height: 216px;
+    max-height: 190px;
     padding: .5em;
 }
 
 
 .main-text {
     grid-column: 2/5;
-    font-size: 1.3em;
-    text-indent: -1.5em;
-    padding-left: 1.75em;
+    font-size: 1.25em;
     color: #4d2c02;
 }
 
 .info-text {
-    padding-top: 1em;
-    font-size: .8em;
+    padding: 1em;
+    font-size: .75em;
     text-indent: .25em;
 }
 
-.first-letter {
-    font-family: 'asset';
-    font-weight: 600;
-    font-size: 1.75em;
+
+.minmax-wrapper {
+    grid-column: 5/6;
+    position: relative;
+    min-width: 425px;
 }
 
-.minmax-wrap {
-    grid-row-end: 1;
-    grid-column: 5/7;
-}
-
-#min-max {
-    min-width: 550px;
-}
 
 button:focus {
     outline: 0;
@@ -72,7 +64,7 @@ button:focus {
     grid-template-columns: repeat(6, 1fr);
 }
 
-.tab-btn {
+.proc-btn {
     display: inline-block;
     background-color: #a1a1a1;
     color: white;
@@ -84,7 +76,7 @@ button:focus {
 }
 
 
-.tab-btn:hover {
+.proc-btn:hover {
     background-color: #777;
 }
 
@@ -140,7 +132,9 @@ small {
 
 
 .form-wrapper {
-    grid-column: 2/6;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1/7;
 }
 
 
@@ -164,19 +158,21 @@ small {
     display: inline-block;
 }
 
-.panel {
-    grid-column: 2/6;
-    padding: 2em 12em;
+.health-form {
+    grid-column: 1/7;
+    justify-self: center;
+    min-width: :530px;
+    max-width: 650px;
 }
 
 .radio-inline input {
     margin: 0 1em;
 }
 
-
-
-
-
+.links {
+    grid-column: 2/5;
+    font-size: 1.25em;
+}
 
 
 /*nav button animations*/
@@ -213,9 +209,6 @@ small {
     -webkit-animation: glowing 1500ms infinite;
     animation: glowing 1500ms infinite;
 }
-
-
-
 
 
 ::-webkit-scrollbar {
