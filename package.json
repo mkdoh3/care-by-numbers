@@ -9,14 +9,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/theamazingprofessionals/care-cost.git"
+        "url": "git+https://github.com/mkdoh3/care-cost.git"
     },
-    "author": "Spencer, Umer, Brian, and Michael",
+    "author": "Michael Doherty in collabration with, The Amazing Professionals",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/theamazingprofessionals/care-cost/issues"
+        "url": "https://github.com/mkdoh3/care-cost/issues"
     },
-    "homepage": "https://github.com/theamazingprofessionals/care-cost#readme",
+    "homepage": "https://github.com/mkdoh3/care-cost#readme",
     "dependencies": {
         "body-parser": "^1.18.2",
         "express": "^4.16.2",
