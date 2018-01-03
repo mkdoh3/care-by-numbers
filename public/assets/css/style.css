@@ -35,12 +35,13 @@ body {
 
 .main-text {
     grid-column: 2/5;
+    margin: 0 1.25em;
     font-size: 1.25em;
     color: #4d2c02;
 }
 
 .info-text {
-    padding: 1em;
+    padding: 1.5em 6.5em 1.5em 1.5em;
     font-size: .75em;
     text-indent: .25em;
 }
@@ -142,20 +143,27 @@ small {
     grid-column: 1/7;
     min-height: 60px;
     background-color: #fbfbfb;
-    text-align: right;
+    /*    text-align: right;*/
     color: #4d2c02;
+    font-size: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.footer-inner {
+    justify-self: flex-end;
+    display: flex;
+    align-items: flex-end;
 }
 
 .footer p {
-    font-size: 1.25em;
-    padding: 1.2em .5em 0em 0em;
-    display: inline-block;
+    padding: .75em;
+    margin: 0;
 }
 
 .footer a {
     color: inherit;
-    padding: 1.2em 1em 0em .5em;
-    display: inline-block;
+    padding: .75em;
 }
 
 .health-form {
@@ -172,6 +180,8 @@ small {
 .links {
     grid-column: 1/7;
     text-align: center;
+    font-size: 1.15em;
+    margin: 1em;
 }
 
 .links p {
