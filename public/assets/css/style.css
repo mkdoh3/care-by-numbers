@@ -170,8 +170,13 @@ small {
 }
 
 .links {
-    grid-column: 2/5;
-    font-size: 1.25em;
+    grid-column: 1/7;
+    text-align: center;
+}
+
+.links p {
+    display: inline;
+    margin: 0 1em;
 }
 
 
