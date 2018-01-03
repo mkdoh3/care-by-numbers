@@ -47,7 +47,7 @@ $(function () {
         $('html,body').animate({
             scrollTop: $(".button-wrapper").offset().top
         }, 800);
-        $("#up-btn").hide();
+        //        $("#up-btn").hide();
     })
 
 
