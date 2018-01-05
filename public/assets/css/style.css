@@ -43,8 +43,7 @@ body {
 
 .info-text {
     grid-column: 2/4;
-    padding: 0em 2.5em;
-    ;
+    padding: 0em 1em 0em 2em;
 }
 
 
