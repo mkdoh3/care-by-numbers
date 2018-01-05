@@ -5,8 +5,14 @@ $(function () {
         scrollTop: 0
     }, 500);
 
-    //draw map on load with default
-    drawMap(1);
+    // only attmept to draw charts and map on main page
+    if (window.location.pathname === "/") {
+        drawBarChart();
+        drawLineChart();
+        //draw map on load with default
+        drawMap(1);
+    }
+
     //update html on load with default
     $("#map-header").prepend("<h2>Heart Transplant<small> Average Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
 

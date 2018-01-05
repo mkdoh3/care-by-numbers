@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Asset|Barlow|Berkshire+Swash|Pacifico|Roboto');
-
 body {
     font-family: 'roboto', sans-serif;
     background-image: url("/assets/img/tiny_grid.png");
     min-width: 936px;
+    min-height: 100vh;
+    display: flex;
 }
 
 .wrapper {
     display: grid;
+    flex: 1;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 1.5em;
     grid-auto-rows:
@@ -24,14 +26,12 @@ body {
     -webkit-box-shadow: 1px 1px 1px #f0f0f0;
     box-shadow: 1px 1px 1px #eee;
     background-color: #fbfbfb;
-
 }
 
-#main-header > img {
+#main-header>img {
     max-height: 190px;
     padding: .5em;
 }
-
 
 .main-text {
     grid-column: 2/5;
@@ -46,13 +46,11 @@ body {
     text-indent: .25em;
 }
 
-
 .minmax-wrapper {
     grid-column: 5/6;
     position: relative;
     min-width: 425px;
 }
-
 
 button:focus {
     outline: 0;
@@ -76,7 +74,6 @@ button:focus {
     font-size: 1.2em;
 }
 
-
 .proc-btn:hover {
     background-color: #777;
 }
@@ -87,18 +84,15 @@ button:focus {
     margin: 0 1.5em;
     color: #4d2c02;
     background-color: #fbfbfb;
-
 }
 
 .chart-header:nth-of-type(2) {
     margin-top: 2em;
 }
 
-
 small {
     font-size: 0.75em;
 }
-
 
 .map-style {
     margin-top: 1em;
@@ -108,7 +102,6 @@ small {
     height: 500px;
 }
 
-
 .nav-btn {
     justify-self: start;
     -ms-flex-item-align: end;
@@ -117,9 +110,7 @@ small {
     border: none;
     color: #b5551e;
     cursor: pointer;
-
 }
-
 
 .region-wrapper {
     grid-column: 2/6;
@@ -131,19 +122,15 @@ small {
     max-width: 100%;
 }
 
-
 .form-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column: 1/7;
 }
 
-
 .footer {
     grid-column: 1/7;
-    grid-row-start: 9;
-    grid-row-end: 10;
-    min-height: 60px;
+    height: 70px;
     align-self: flex-end;
     background-color: #fbfbfb;
     color: #4d2c02;
@@ -226,7 +213,6 @@ small {
     -webkit-animation: glowing 1500ms infinite;
     animation: glowing 1500ms infinite;
 }
-
 
 ::-webkit-scrollbar {
     width: 0px;
