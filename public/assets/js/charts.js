@@ -1,4 +1,4 @@
-Chart.defaults.global.animation.duration = 800;
+Chart.defaults.global.animation.duration = 1200;
 Chart.defaults.global.defaultFontColor = '#4d2c02';
 Chart.defaults.global.defaultFontFamily = 'roboto';
 Chart.defaults.global.defaultFontSize = 16;
@@ -17,9 +17,6 @@ function drawBarChart() {
             }],
         },
         options: {
-            animation: {
-                duration: 1500
-            },
             responsive: true,
             maintainAspectRatio: false,
             scales: {

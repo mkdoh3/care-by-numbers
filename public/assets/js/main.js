@@ -5,22 +5,21 @@ $(function () {
         scrollTop: 0
     }, 500);
 
-    // only attmept to draw charts and map on main page
+    // don't both with jquery and only attmept to draw charts and map unless on the homepage
     if (window.location.pathname === "/") {
         drawBarChart();
         drawLineChart();
-        //draw map on load with default
         drawMap(1);
+        //update html on load with default
+        $("#map-header").prepend("<h2>Heart Transplant<small> Average Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
+
+        //hide empty lineChart and nav btn by default, will show on update 
+        $("#region-div").hide();
+        $("#down-btn").hide();
+        $("#up-btn").hide();
+        $("#region-header").hide();
     }
 
-    //update html on load with default
-    $("#map-header").prepend("<h2>Heart Transplant<small> Average Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
-
-    //    hide empty lineChart and nav btn by default, will show on update 
-    $("#region-div").hide();
-    $("#down-btn").hide();
-    $("#up-btn").hide();
-    $("#region-header").hide();
 
 
 

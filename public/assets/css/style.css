@@ -2,7 +2,7 @@
 body {
     font-family: 'roboto', sans-serif;
     background-image: url("/assets/img/tiny_grid.png");
-    min-width: 936px;
+    min-width: 998px;
     min-height: 100vh;
     display: flex;
 }
@@ -16,7 +16,6 @@ body {
 }
 
 #main-header {
-    margin-bottom: 1.5em;
     grid-column: 1/7;
     display: grid;
     grid: 1fr;
@@ -36,20 +35,24 @@ body {
 .main-text {
     grid-column: 2/5;
     margin: 0 1.25em;
-    font-size: 1.25em;
+    font-size: 1.2em;
     color: #4d2c02;
 }
 
 .info-text {
-    padding: 1.5em 6.5em 1.5em 1.5em;
-    font-size: .75em;
-    text-indent: .25em;
+    padding: 1.5em 12em 0em 2em;
+    font-size: .85em;
 }
+
+
+/*tried a million dif things to make this chart properly responsive.. */
 
 .minmax-wrapper {
     grid-column: 5/6;
     position: relative;
     min-width: 425px;
+    height: 40vh;
+    align-self: flex-end;
 }
 
 button:focus {
@@ -217,4 +220,22 @@ small {
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
+}
+
+@media (max-width: 1350px) {
+    .minmax-wrapper {
+        height: 45vh;
+    }
+    .main-text {
+        font-size: 1.1em;
+    }
+    .info-text {
+        padding-right: 6em;
+    }
+}
+
+@media (max-width: 1150px) {
+    .minmax-wrapper {
+        height: 55vh;
+    }
 }
