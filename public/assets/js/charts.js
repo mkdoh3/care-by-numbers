@@ -6,6 +6,10 @@ Chart.defaults.global.defaultFontSize = 16;
 let barChart;
 let lineChart;
 
+//bar chart wont adjust its height properly, played with a million different settings and css tweaks. 
+//if I set maintainAspectRatio true it kind of works, but looks incredible distorted
+//if set to false, it growns in height okay, but wont shrink in height on resize.. something strange about what the hidden chart.js elements are doing..
+
 function drawBarChart() {
     const barCtx = document.getElementById("min-max").getContext("2d");
     barChart = Chart.Bar(barCtx, {

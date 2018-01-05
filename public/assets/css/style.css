@@ -45,7 +45,7 @@ body {
 }
 
 
-/*tried a million dif things to make this chart properly responsive.. */
+/*tried a million dif things to make this chart properly responsive.. see charts.js notes*/
 
 .minmax-wrapper {
     grid-column: 5/6;
