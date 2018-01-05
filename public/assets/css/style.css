@@ -105,7 +105,6 @@ small {
 .map-style {
     margin-top: 1em;
     grid-column: 2/6;
-    grid-row: 5;
     justify-self: center;
     width: 100%;
     height: 500px;
