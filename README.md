@@ -21,7 +21,6 @@ Current Supported Features:
 * View region-wide minimum and maximum cost data for individual states
 <br>
 
-<img align="center" width="600" title="Care by Numbers gif" src="md_cbn.gif">
 
 ### Prerequisites
 
