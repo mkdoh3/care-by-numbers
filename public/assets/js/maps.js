@@ -43,7 +43,7 @@ const drawMap = id =>
             "type": "map",
             "theme": "none",
             "colorSteps": 10,
-            mouseWheelZoomEnabled: true,
+            "mouseWheelZoomEnabled": true,
             "dataProvider": {
                 "map": "usa2Low",
                 "areas": [],

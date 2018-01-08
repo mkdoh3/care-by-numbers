@@ -28,7 +28,7 @@ module.exports = function (app) {
 
 
     //all cost data
-    app.get("/api/costs", function (req, res) {
+    app.get("/api/cost", function (req, res) {
         db.Cost.findAll({}).then(function (result) {
             res.json(result);
         });
@@ -38,7 +38,9 @@ module.exports = function (app) {
     //all costs by zip code
     app.get("/api/cost/:zip", function (req, res) {
         db.Cost.findAll({
-            order: [['hospitalCharges', 'DESC']],
+            order: [
+                ['hospitalCharges', 'DESC']
+            ],
             include: [{
                 model: db.Provider,
                 where: {
@@ -82,7 +84,7 @@ module.exports = function (app) {
             include: [{
                 model: db.Provider,
                 attributes: ['state']
-                }]
+            }]
         }).then(function (result) {
             result = helpers.stateCostAverages(result)
             res.json(result);
@@ -101,7 +103,9 @@ module.exports = function (app) {
                 model: db.Provider,
                 attributes: ['state_old']
             }],
-            order: [['hospitalCharges', 'DESC']]
+            order: [
+                ['hospitalCharges', 'DESC']
+            ]
         }).then(function (result) {
             result = helpers.costMinMax(result)
             res.json(result)
@@ -122,7 +126,9 @@ module.exports = function (app) {
                     state: req.params.state
                 }
             }],
-            order: [['hospitalCharges', 'DESC']]
+            order: [
+                ['hospitalCharges', 'DESC']
+            ]
         }).then(function (result) {
             result = helpers.regionMinMax(result)
             res.json(result)

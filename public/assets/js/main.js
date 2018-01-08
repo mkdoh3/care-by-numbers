@@ -11,7 +11,7 @@ $(function () {
         drawLineChart();
         drawMap(1);
         //update html on load with default
-        $("#map-header").prepend("<h2>Heart Transplant<small> Average Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.</p>");
+        $("#map-header").prepend("<h2>Heart Transplant<small> Average Procedure Cost by State</small></h2><p>Includes all heart transplant procedures and implantation of ventricular assist devices with major complications and comorbidities.<br><small>*Select a state for more detailed data. Blank states indicate no available datapoints.</small></p>");
 
         //hide empty lineChart and nav btn by default, will show on update 
         $("#region-div").hide();
